@@ -10,7 +10,11 @@ if [ $MYSQL -eq 0 ]; then
         # ja väljastame vastava teate ning
         # paigalda teenus
         echo "Paigaldame mysql ja vajalikud teenused"
+        wget htts://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb
+        dpkg -i mysql-apt-config*
+        apt update
         apt install mysql-server
+        rm -R mysql-apt-config*
         echo "mysql on paigaldatud"
         # lisame võimaluse kasutada mysql käsk ilma kasutajat ja parooli liitmata
         touch $HOME/.my.cnf # lisame vajaliku konfikuratsiooni faili antud kasutaja kodukasuta
